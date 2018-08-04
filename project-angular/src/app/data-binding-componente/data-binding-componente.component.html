@@ -1,0 +1,86 @@
+<section>
+ <article>
+	<h3>Class e Style Binding</h3>
+	<div>
+		
+	</div>
+	<select #classe (change)="0">
+		<option *ngFor="let c of classes" value="{{c}}">
+			{{c}}
+		</option>
+		
+	</select>
+    <br><br><br>
+    <div class="alert" role="alert"
+    	[class.alert-success]="classe.value=='alert-success'">
+    	Sucesso
+    </div>
+	<div class="alert" role="alert"
+		[class.alert-info]="classe.value=='alert-info'">
+		info
+	</div>
+	<div class="alert" role="alert"
+		[class.alert-warning]="classe.value=='alert-warning'">
+		alert
+	</div>
+	<div class="alert" role="alert"
+		[class.alert-danger]="classe.value=='alert-danger'">
+		Erro
+	</div>
+ </article>
+</section>
+<div class="alert {{classe.value}} role=alert">
+	Texto colorido conforme o combobox
+</div>
+
+<div class="alert alert-danger" role="alert"
+	[style.display] = "classe.value=='alert-danger' ? 'block':'none' ">
+		Esse texto só aparece em caso de erro!
+</div>
+    <br><br><br> 
+ <section>
+ 	<h3>Event Binding</h3>
+ 	<article>
+ 		<div>
+ 			<button (click)="botaoClicado()" class="btn btn-primary">Me click</button><br><br>
+ 			<input type="text" name="" 
+ 			(keyup)="onkeyUp($event)" 
+ 			(keyup.enter)="salvarValor(campoInput.value)"
+ 			(blur)="salvarValor(campoInput.value)"
+ 			#campoInput/>
+ 			<p>Valor atual: {{valorAtual}}</p>
+ 			<p>Valor Salvo: {{valorSalvo}}</p>
+ 			<br>
+ 			<span
+ 			(mouseover)="onMouseOverOut()"
+ 			(mouseout)="onMouseOverOut()"
+ 			[class.highlight]="isMouseOver">
+ 				Passe o mouse sobre mim
+ 			</span>
+ 		</div>
+ 	</article>
+ </section>
+  <br><br><br>  <br><br><br> 
+
+  <section>
+ 	<h3>Two-way Binding</h3>
+ 	<article>
+ 		<div>
+ 			<input type="text" name=""
+ 			[value]="nome"
+ 			(keyup)="nome = $event.target.value"
+ 			/>
+ 			<input type="text" [(ngModel)]="nome"/>
+ 			<p>Você digitou: {{nome}}</p>
+ 		</div>
+ 		<br>
+ 		<div>
+ 			<p>Meu nome é {{pessoa.nome}} e tenho {{pessoa.idade}} anos de idade</p>
+ 			<input type="text" [(ngModel)]="pessoa.nome">
+ 			<input type="text" [(ngModel)]="pessoa.idade">
+ 			
+ 		</div>
+ 	</article>
+ </section>
+
+   <br><br><br>  <br><br><br> 
